@@ -18,16 +18,18 @@ import {
   NotFoundPage,
 } from '../components/common/MockPages';
 // import { RegisterForm } from '../features/auth';
-import { LoginForm} from '../features/auth';
+import { LoginForm } from '../features/auth';
 import { RegisterForm } from '../features/auth/components/RegisterForm';
+import { HomePage } from '../features/home/page';
+
 
 export const router = createBrowserRouter([
   // Root Redirect
   {
     path: '/',
-    element: <Navigate to={ROUTES.DASHBOARD} replace />,
+    element: <HomePage />
   },
-  
+
   // Public routes (Auth Layout)
   {
     element: <AuthLayout />,
@@ -37,7 +39,7 @@ export const router = createBrowserRouter([
       { path: ROUTES.FORGOT_PASSWORD, element: <ForgotPasswordPage /> },
     ],
   },
-  
+
   // Protected routes (Protected Route + Dashboard Layout)
   {
     element: <ProtectedRoute />,
@@ -49,7 +51,7 @@ export const router = createBrowserRouter([
           { path: ROUTES.ACCOUNTS, element: <AccountsPage /> },
           { path: ROUTES.TRANSFER, element: <TransferPage /> },
           { path: ROUTES.TRANSACTIONS, element: <TransactionsPage /> },
-          
+
           // Admin routes (Role Restricted)
           {
             element: <RoleRoute allowedRoles={['ADMIN']} />,
@@ -63,10 +65,10 @@ export const router = createBrowserRouter([
       },
     ],
   },
-  
+
   // Forbidden error page
   { path: ROUTES.FORBIDDEN, element: <ForbiddenPage /> },
-  
+
   // Catch-all (404)
   { path: ROUTES.NOT_FOUND, element: <NotFoundPage /> },
 ]);
