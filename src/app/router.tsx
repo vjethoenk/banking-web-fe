@@ -4,7 +4,7 @@ import { AuthLayout } from './layouts/AuthLayout';
 import { DashboardLayout } from './layouts/DashboardLayout';
 import { ProtectedRoute } from '../components/common/ProtectedRoute';
 import { RoleRoute } from '../components/common/RoleRoute';
-import { LoginForm } from '../features/auth';
+
 import {
   DashboardPage,
   AccountsPage,
@@ -13,11 +13,13 @@ import {
   AdminUsersPage,
   AdminRolesPage,
   AdminPermissionsPage,
-  RegisterPage,
   ForgotPasswordPage,
   ForbiddenPage,
   NotFoundPage,
 } from '../components/common/MockPages';
+// import { RegisterForm } from '../features/auth';
+import { LoginForm} from '../features/auth';
+import { RegisterForm } from '../features/auth/components/RegisterForm';
 
 export const router = createBrowserRouter([
   // Root Redirect
@@ -31,7 +33,7 @@ export const router = createBrowserRouter([
     element: <AuthLayout />,
     children: [
       { path: ROUTES.LOGIN, element: <LoginForm /> },
-      { path: ROUTES.REGISTER, element: <RegisterPage /> },
+      { path: ROUTES.REGISTER, element: <RegisterForm /> },
       { path: ROUTES.FORGOT_PASSWORD, element: <ForgotPasswordPage /> },
     ],
   },

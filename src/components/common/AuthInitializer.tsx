@@ -6,41 +6,36 @@ interface AuthInitializerProps {
   children: React.ReactNode;
 }
 
-/**
- * AuthInitializer: Khi F5 (page reload), nếu có accessToken trong localStorage,
- * gọi /users/my-info để đồng bộ lại thông tin user vào store.
- * Hiển thị loading spinner cho đến khi xong.
- */
 export const AuthInitializer: React.FC<AuthInitializerProps> = ({ children }) => {
   const { accessToken, setUser, clearAuth } = useAuthStore();
-  const [isInitializing, setIsInitializing] = useState(true);
+  const [isInitializing, setIsInitializing] = useState(
+  () => Boolean(accessToken)
+);
 
   useEffect(() => {
     if (!accessToken) {
-      setIsInitializing(false);
       return;
     }
 
-    // Có token → gọi API để lấy thông tin user mới nhất
     getMyInfoApi()
       .then((profile) => {
-        // Chuyển UserProfile → User (flatten roles/permissions)
         setUser({
           id: profile.id,
           username: profile.username,
           email: profile.email,
           roles: profile.roles.map((r) => r.name),
-          permissions: profile.roles.flatMap((r) => r.permissions.map((p) => p.name)),
+          permissions: profile.roles.flatMap((r) =>
+            r.permissions.map((p) => p.name)
+          ),
         });
       })
       .catch(() => {
-        // Token không hợp lệ → xóa auth, để interceptor redirect về login
         clearAuth();
       })
       .finally(() => {
         setIsInitializing(false);
       });
-  }, []); // Chỉ chạy 1 lần khi app mount
+  }, [accessToken, setUser, clearAuth]); 
 
   if (isInitializing) {
     return (

@@ -17,8 +17,8 @@ export const LoginForm: React.FC = () => {
       setUsername('admin');
       setPassword('admin');
     } else {
-      setUsername('customer');
-      setPassword('customer123');
+      setUsername('VietHoang2');
+      setPassword('123456789');
     }
   };
 

@@ -1,4 +1,3 @@
-// ---- User (simplified, from login response) ----
 export interface User {
   id: string;
   username: string;
@@ -56,4 +55,11 @@ export interface LoginResponse {
   refreshToken?: string;
   authenticated: boolean;
   user: User;
+}
+
+export interface RegisterRequest {
+  username: string;
+  email: string;
+  password: string;
+  phone: string
 }
