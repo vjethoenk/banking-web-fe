@@ -14,7 +14,6 @@ interface AuthState {
   clearAuth: () => void;
 }
 
-// Helper functions to safely fetch stored variables on store initialization
 const getStoredToken = () => localStorage.getItem(STORAGE_KEYS.ACCESS_TOKEN);
 const getStoredRefreshToken = () => localStorage.getItem(STORAGE_KEYS.REFRESH_TOKEN);
 const getStoredUser = (): User | null => {

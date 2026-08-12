@@ -19,6 +19,7 @@ export const HomePage = () => {
 
                 <RegisterSection />
             </main>
+
             <Footer />
         </div>
     );
