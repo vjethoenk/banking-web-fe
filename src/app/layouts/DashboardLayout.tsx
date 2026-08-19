@@ -11,9 +11,9 @@ export const DashboardLayout: React.FC = () => {
   const { handleLogout } = useLogout();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-    const isAdmin = user?.roles?.includes("ADMIN") ?? false;
+  const isAdmin = user?.roles?.includes("ADMIN") ?? false;
 
-   return (
+  return (
     <div className="flex min-h-screen bg-[#f4f6f9] font-sans text-slate-800">
       {/* Desktop Sidebar */}
       <Sidebar
@@ -90,7 +90,7 @@ export const DashboardLayout: React.FC = () => {
           />
 
           <div className="flex-1 overflow-y-auto">
-            <div className="mx-auto w-full max-w-[1100px] p-4 md:p-6">
+            <div className="mx-auto w-full ">
               <Outlet />
             </div>
           </div>

@@ -10,3 +10,7 @@ export const apiCreateAccount = (data: {accountType: string}) =>{
     const response = apiClient.post(`/accounts`, data)
     return response;
 }
+export const apiUpdateDepositAccount = (data: {balance: string}) => {
+    const response = apiClient.put(`/accounts/deposit`, data)
+    return response;
+}

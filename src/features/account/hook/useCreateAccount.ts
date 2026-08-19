@@ -1,5 +1,5 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { apiCreateAccount, apiUpdateUser } from "../api/account.api";
+import { apiCreateAccount, apiUpdateDepositAccount, apiUpdateUser } from "../api/account.api";
 import type { AccountFormData } from "../types/account.types";
 import { useAuthStore } from "@/features/auth";
 
@@ -18,6 +18,16 @@ export const useUpdateUserMutation = (id: string) => {
     const queryClient = useQueryClient();
     return useMutation({
         mutationFn: (data: AccountFormData) => apiUpdateUser(data, useAuthStore.getState().user?.id || ""),
+        onSuccess: () => {
+            queryClient.invalidateQueries({ queryKey: ["accounts"] });
+        },
+    })
+}
+
+export const useUpdateDepositAccountMutation = (id: string) => {
+    const queryClient = useQueryClient();
+    return useMutation({
+        mutationFn: (data: { balance: string }) => apiUpdateDepositAccount(data),
         onSuccess: () => {
             queryClient.invalidateQueries({ queryKey: ["accounts"] });
         },
