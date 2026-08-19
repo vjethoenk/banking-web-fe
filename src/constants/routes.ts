@@ -11,4 +11,6 @@ export const ROUTES = {
   ADMIN_PERMISSIONS: '/admin/permissions',
   FORBIDDEN: '/403',
   NOT_FOUND: '*',
+  HOME: '/',
+  SETTINGS: 'settingss',
 } as const;

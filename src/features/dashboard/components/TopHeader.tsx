@@ -7,12 +7,10 @@ import {
 import { Button } from "@/components/ui/button";
 
 interface TopHeaderProps {
-  username?: string;
   handleLogout: () => void;
 }
 
 export default function TopHeader({
-  username,
   handleLogout,
 }: TopHeaderProps) {
   return (

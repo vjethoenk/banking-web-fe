@@ -4,17 +4,11 @@ import { menuItems, adminItems } from "@/constants/navigation";
 import { NavItem } from "./SidebarMenu";
 
 interface SidebarProps {
-  user?: {
-    username?: string;
-    email?: string | null;
-    roles?: string[];
-  };
   isAdmin: boolean;
   handleLogout: () => void;
 }
 
 export default function Sidebar({
-  user,
   isAdmin,
   handleLogout,
 }: SidebarProps) {

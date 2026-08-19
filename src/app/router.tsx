@@ -1,33 +1,32 @@
-import { createBrowserRouter, Navigate } from 'react-router-dom';
+import { createBrowserRouter} from 'react-router-dom';
 import { ROUTES } from '../constants/routes';
 import { AuthLayout } from './layouts/AuthLayout';
 import { DashboardLayout } from './layouts/DashboardLayout';
 import { ProtectedRoute } from '../components/common/ProtectedRoute';
 import { RoleRoute } from '../components/common/RoleRoute';
 
-import {
-  DashboardPage,
-  AccountsPage,
-  TransferPage,
-  TransactionsPage,
-  AdminUsersPage,
-  AdminRolesPage,
-  AdminPermissionsPage,
-  ForgotPasswordPage,
-  ForbiddenPage,
-  NotFoundPage,
-} from '../components/common/MockPages';
-// import { RegisterForm } from '../features/auth';
+
 import { LoginForm } from '../features/auth';
 import { RegisterForm } from '../features/auth/components/RegisterForm';
-import { HomePage } from '../features/home/page';
+import MainLayout from '@/features/home/layout';
+import { HomePage } from '@/features/home/page';
 
+import { ForbiddenPage } from '@/components/common/ForbiddenPage';
+import { NotFoundPage } from '@/components/common/NotFoundPage';
+import { DashboardPage } from '@/features/dashboard/page';
+import { SettingsPage } from '@/features/home/components/Settings';
 
 export const router = createBrowserRouter([
   // Root Redirect
   {
     path: '/',
-    element: <HomePage />
+    element: <MainLayout />,
+    children: [
+      {
+        index: true,
+        element: <HomePage />,
+      },
+    ],
   },
 
   // Public routes (Auth Layout)
@@ -36,7 +35,7 @@ export const router = createBrowserRouter([
     children: [
       { path: ROUTES.LOGIN, element: <LoginForm /> },
       { path: ROUTES.REGISTER, element: <RegisterForm /> },
-      { path: ROUTES.FORGOT_PASSWORD, element: <ForgotPasswordPage /> },
+      // { path: ROUTES.FORGOT_PASSWORD, element: <ForgotPasswordPage /> },
     ],
   },
 
@@ -48,18 +47,19 @@ export const router = createBrowserRouter([
         element: <DashboardLayout />,
         children: [
           { path: ROUTES.DASHBOARD, element: <DashboardPage /> },
-          { path: ROUTES.ACCOUNTS, element: <AccountsPage /> },
-          { path: ROUTES.TRANSFER, element: <TransferPage /> },
-          { path: ROUTES.TRANSACTIONS, element: <TransactionsPage /> },
+          {path: ROUTES.SETTINGS, element: <SettingsPage /> },
+          // { path: ROUTES.ACCOUNTS, element: <AccountsPage /> },
+          // { path: ROUTES.TRANSFER, element: <TransferPage /> },
+          // { path: ROUTES.TRANSACTIONS, element: <TransactionsPage /> },
 
           // Admin routes (Role Restricted)
           {
             element: <RoleRoute allowedRoles={['ADMIN']} />,
-            children: [
-              { path: ROUTES.ADMIN_USERS, element: <AdminUsersPage /> },
-              { path: ROUTES.ADMIN_ROLES, element: <AdminRolesPage /> },
-              { path: ROUTES.ADMIN_PERMISSIONS, element: <AdminPermissionsPage /> },
-            ],
+            // children: [
+            //   { path: ROUTES.ADMIN_USERS, element: <AdminUsersPage /> },
+            //   { path: ROUTES.ADMIN_ROLES, element: <AdminRolesPage /> },
+            //   { path: ROUTES.ADMIN_PERMISSIONS, element: <AdminPermissionsPage /> },
+            // ],
           },
         ],
       },

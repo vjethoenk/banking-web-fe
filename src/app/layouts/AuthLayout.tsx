@@ -8,7 +8,7 @@ export const AuthLayout: React.FC = () => {
 
   // If already authenticated, skip login and go to dashboard
   if (isAuthenticated) {
-    return <Navigate to={ROUTES.DASHBOARD} replace />;
+    return <Navigate to={ROUTES.HOME} replace />;
   }
 
   return (
@@ -27,3 +27,4 @@ export const AuthLayout: React.FC = () => {
     </div>
   );
 };
+              

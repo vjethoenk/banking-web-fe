@@ -11,16 +11,12 @@ export const DashboardLayout: React.FC = () => {
   const { handleLogout } = useLogout();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-
-  
-
     const isAdmin = user?.roles?.includes("ADMIN") ?? false;
 
    return (
     <div className="flex min-h-screen bg-[#f4f6f9] font-sans text-slate-800">
       {/* Desktop Sidebar */}
       <Sidebar
-        user={user ? user : { username: "", email: "", roles: [] }}
         isAdmin={isAdmin}
         handleLogout={handleLogout}
       />
@@ -90,7 +86,6 @@ export const DashboardLayout: React.FC = () => {
         {/* Main */}
         <main className="flex min-w-0 flex-1 flex-col">
           <TopHeader
-            username={user?.username}
             handleLogout={handleLogout}
           />
 

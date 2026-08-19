@@ -1,7 +1,10 @@
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useAuthStore } from "@/features/auth";
 
 export default function HeroSection() {
+    const isUser = useAuthStore((state) => state.user);
+    console.log("User: ", isUser);
     return (
         <section className="bg-[#f5f7fa]">
             <div className="mx-auto grid max-w-7xl items-center gap-12 px-6 py-16 md:grid-cols-2 md:py-20">

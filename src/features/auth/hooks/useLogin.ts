@@ -19,7 +19,7 @@ export const useLogin = () => {
       const response = await loginApi(data);
       const { accessToken, refreshToken, user } = response.result;
       login(accessToken, refreshToken, user);
-      navigate(ROUTES.DASHBOARD);
+      navigate(ROUTES.HOME, { replace: true });
       return { success: true };
     } catch (err) {
       setError(err as ApiError);
