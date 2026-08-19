@@ -12,5 +12,6 @@ export const ROUTES = {
   FORBIDDEN: '/403',
   NOT_FOUND: '*',
   HOME: '/',
-  SETTINGS: 'settingss',
+  SETTINGS: '/settings',
+  ACCOUNT: '/account',
 } as const;

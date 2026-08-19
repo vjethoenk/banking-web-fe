@@ -9,8 +9,8 @@ interface AuthInitializerProps {
 export const AuthInitializer: React.FC<AuthInitializerProps> = ({ children }) => {
   const { accessToken, setUser, clearAuth } = useAuthStore();
   const [isInitializing, setIsInitializing] = useState(
-  () => Boolean(accessToken)
-);
+    () => Boolean(accessToken)
+  );
 
   useEffect(() => {
     if (!accessToken) {
@@ -23,6 +23,11 @@ export const AuthInitializer: React.FC<AuthInitializerProps> = ({ children }) =>
           id: profile.id,
           username: profile.username,
           email: profile.email,
+          phone: profile.phone,
+          citizenId: profile.citizenId,
+          dateOfBirth: profile.dateOfBirth,
+          gender: profile.gender,
+          address: profile.address,
           roles: profile.roles.map((r) => r.name),
           permissions: profile.roles.flatMap((r) =>
             r.permissions.map((p) => p.name)
@@ -35,7 +40,7 @@ export const AuthInitializer: React.FC<AuthInitializerProps> = ({ children }) =>
       .finally(() => {
         setIsInitializing(false);
       });
-  }, [accessToken, setUser, clearAuth]); 
+  }, [accessToken, setUser, clearAuth]);
 
   if (isInitializing) {
     return (

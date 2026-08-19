@@ -4,7 +4,12 @@ export interface User {
   username: string;
   email: string | null;
   roles: string[];
+  phone?: string;
   permissions: string[];
+  citizenId?: string;
+  dateOfBirth?: string
+  gender?: string
+  address?: string
 }
 
 // ---- UserProfile (full, from /users/my-info) ----

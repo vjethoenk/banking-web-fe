@@ -43,7 +43,7 @@ export default function Header() {
                     <DropdownMenuTrigger render={<Button variant="outline" className="border-none text-[#155eef]">Xin chào {user?.username}</Button>} />
                     <DropdownMenuContent>
                         <DropdownMenuGroup>
-                            <DropdownMenuItem><Link to={ROUTES.DASHBOARD}>Tài khoản</Link></DropdownMenuItem>
+                            {user.citizenId ? <DropdownMenuItem><Link to={ROUTES.DASHBOARD}>Tài khoản</Link></DropdownMenuItem> : <></>}
                             <DropdownMenuItem onClick={handleLogout}>Đăng xuất</DropdownMenuItem>
                         </DropdownMenuGroup>
                     </DropdownMenuContent>

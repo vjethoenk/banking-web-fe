@@ -1,6 +1,8 @@
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useAuthStore } from "@/features/auth";
+import { Link } from "react-router-dom";
+import { ROUTES } from "@/constants/routes";
 
 export default function HeroSection() {
     const isUser = useAuthStore((state) => state.user);
@@ -34,7 +36,9 @@ export default function HeroSection() {
                         <Button
                             className="bg-[#155eef] px-6 shadow-md hover:bg-[#0f4dcc]"
                         >
-                            Mở tài khoản ngay
+                            <Link to={ROUTES.ACCOUNT}>
+                                Mở tài khoản ngay
+                            </Link>
                             <ArrowRight className="ml-2 h-4 w-4" />
                         </Button>
 
