@@ -14,4 +14,5 @@ export const ROUTES = {
   HOME: '/',
   SETTINGS: '/settings',
   ACCOUNT: '/account',
+  DEPOSIT: '/deposit',
 } as const;

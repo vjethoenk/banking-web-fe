@@ -1,11 +1,15 @@
 import { Card } from "@/components/ui/card";
 import { Button } from "@base-ui/react/button";
 import { Copy, CreditCard } from "lucide-react";
+import type { Account } from "../../banking/api/banking.api";
 
 interface IProps {
     totalBalance: number;
+    accounts: Account[];
 }
-export const BalanceCard = ({ totalBalance }: IProps) => {
+export const BalanceCard = ({ totalBalance, accounts }: IProps) => {
+    const primaryAccount = accounts[0];
+
     return (
         <Card className="overflow-hidden rounded-lg border-0 bg-transparent shadow-none p-0">
             <div className="relative min-h-[145px] overflow-hidden rounded-lg bg-gradient-to-br from-[#2454c5] to-[#1946b4] p-4 text-white shadow-sm">
@@ -24,6 +28,7 @@ export const BalanceCard = ({ totalBalance }: IProps) => {
                             {totalBalance.toLocaleString('vi-VN')}
                             <span className="ml-1 text-sm font-medium">VND</span>
                         </p>
+                       
                     </div>
 
                     <div className="flex h-8 w-8 items-center justify-center rounded-sm bg-black/20">
@@ -39,7 +44,7 @@ export const BalanceCard = ({ totalBalance }: IProps) => {
                         </p>
 
                         <p className="mt-0.5 text-[10px] font-semibold">
-                            0987 6543 2109
+                            {primaryAccount?.accountNumber ?? "Chưa có tài khoản"}
                         </p>
                     </div>
 

@@ -27,7 +27,7 @@ export const useUpdateUserMutation = (id: string) => {
 export const useUpdateDepositAccountMutation = (id: string) => {
     const queryClient = useQueryClient();
     return useMutation({
-        mutationFn: (data: { balance: string }) => apiUpdateDepositAccount(data),
+        mutationFn: (data: { balance: number}) => apiUpdateDepositAccount(data, id),
         onSuccess: () => {
             queryClient.invalidateQueries({ queryKey: ["accounts"] });
         },

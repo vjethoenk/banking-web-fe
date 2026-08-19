@@ -13,6 +13,7 @@ import { NotFoundPage } from '@/components/common/NotFoundPage';
 import { DashboardPage } from '@/features/dashboard/page';
 import { SettingsPage } from '@/features/home/components/Settings';
 import { CreateAccount } from '@/features/account/components/CreateAccount';
+import DepositPage from '@/features/account/pages/DepositPage';
 
 export const router = createBrowserRouter([
   // Root / Home
@@ -43,6 +44,7 @@ export const router = createBrowserRouter([
         children: [
           { path: ROUTES.DASHBOARD, element: <DashboardPage /> },
           { path: ROUTES.SETTINGS, element: <SettingsPage /> },
+          { path: ROUTES.DEPOSIT, element: <DepositPage /> },
         ],
       },
     ],

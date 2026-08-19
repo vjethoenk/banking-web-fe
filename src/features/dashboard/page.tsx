@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { getAccounts, type Account } from "../banking/api/banking.api";
 import { useAuthStore } from "../auth";
-import { ROUTES } from "@/constants/routes";
 import { BalanceCard } from "./components/BalanceCard";
 import { QuickActions } from "./components/QuickActions";
 import { RecentTransactions } from "./components/RecentTransactions";
@@ -45,7 +44,8 @@ export const DashboardPage: React.FC = () => {
               {/* Balance + quick actions */}
               <div className="grid grid-cols-1 gap-3">
                 <BalanceCard
-                  totalBalance={totalBalance} />
+                  totalBalance={totalBalance}
+                  accounts={accounts} />
 
                 <QuickActions />
               </div>
