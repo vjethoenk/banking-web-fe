@@ -13,7 +13,7 @@ import { DashboardPage } from '@/features/dashboard/page';
 import { SettingsPage } from '@/features/home/components/Settings';
 import { CreateAccount } from '@/features/account/components/CreateAccount';
 import DepositPage from '@/features/account/pages/DepositPage';
-import TransferPage from '@/features/transfer/page/TransferPage';
+import TransferPage from '@/features/transfer/pages/TransferPage';
 
 export const router = createBrowserRouter([
   // Root / Home

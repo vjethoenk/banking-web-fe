@@ -5,6 +5,7 @@ import type { Account } from "@/features/banking/api/banking.api";
 export default function FromAccountCard({ account }: { account: Account[] }) {
     const primaryAccount = account[0];
     const totalBalance = account.reduce((sum, account) => sum + account.balance, 0);
+
     return (
         <Card className="rounded-lg border-0 bg-white p-3 shadow-[0_2px_12px_rgba(15,23,42,0.06)]">
             <p className=" text-[12px] font-medium text-slate-500">

@@ -1,13 +1,15 @@
 import { Check } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import { useState } from "react";
 import { useVerifyReceiverAccountMutation } from "@/features/account/hook/useCreateAccount";
+import { useTransferStore } from "../stores/transfer.stores";
 
 
 export default function ReceiverCard() {
-    const [receiverAccount, setReceiverAccount] = useState("");
-    const [accountName, setAccountName] = useState("")
+    const setReceiverAccount = useTransferStore(s => s.setReceiverAccount);
+    const setReceiverUserName = useTransferStore(s => s.setReceiverUserName);
+    const { receiverUserName } = useTransferStore();
+    const { receiverAccount } = useTransferStore()
     const {
         mutate: verifyReceiverAccount,
         isPending,
@@ -20,7 +22,7 @@ export default function ReceiverCard() {
 
         verifyReceiverAccount(receiverAccount, {
             onSuccess: (data) => {
-                setAccountName(data.result.username);
+                setReceiverUserName(data.result.username);
             },
         });
     };
@@ -58,7 +60,7 @@ export default function ReceiverCard() {
                 </p>
             )}
 
-            {accountName && !isPending && (
+            {receiverUserName && !isPending && (
                 <div className=" flex h-[52px] items-center justify-between rounded-md bg-slate-50 px-3">
                     <div className="flex items-center gap-3">
                         <div className="flex h-7 w-7 items-center justify-center rounded-full bg-blue-100 text-[10px] font-semibold text-blue-600">
@@ -71,7 +73,7 @@ export default function ReceiverCard() {
                             </p>
 
                             <p className="text-[10px] font-semibold text-slate-700">
-                                {accountName}
+                                {receiverUserName}
                             </p>
                         </div>
                     </div>
