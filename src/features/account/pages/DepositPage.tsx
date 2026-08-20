@@ -6,10 +6,11 @@ import DepositAmountCard from "../components/deposit/DepositAmountCard";
 import { useEffect, useState } from "react";
 import { getAccounts, type Account } from "@/features/banking/api/banking.api";
 import { useAccountStore } from "../store/account.store";
-import { apiUpdateDepositAccount } from "../api/account.api";
+import { useUpdateDepositAccountMutation } from "../hook/useCreateAccount";
 
 export default function DepositPage() {
     const { balance } = useAccountStore();
+    const setBalance = useAccountStore((state) => state.setBalance);
     const [accounts, setAccounts] = useState<Account[]>([])
     useEffect(() => {
         getAccounts()
@@ -17,15 +18,24 @@ export default function DepositPage() {
             .catch(console.error)
     }, []);
 
-
+    const account = accounts[0];
+    const { mutateAsync: updateDepositAccount } =
+        useUpdateDepositAccountMutation();
+        
+    if (!account) {
+        return <div>Loading...</div>;
+    }
 
     const handleDeposit = async () => {
-        const account = accounts[0];
-        if (!account) return;
 
-        await apiUpdateDepositAccount({ balance }, account.id);
+        await updateDepositAccount({
+            id: account.id,
+            balance,
+        });
+
         const updatedAccounts = await getAccounts();
         setAccounts(updatedAccounts);
+        setBalance(0);
     }
 
     return (

@@ -11,6 +11,7 @@ export default function DepositAmountCard() {
         "5.000.000",
     ];
     const setBalance = useAccountStore((state) => state.setBalance)
+    const balance = useAccountStore((state) => state.balance)
     return (
         <Card className="rounded-lg border-slate-200 bg-white shadow-none">
             <CardContent className="p-2.5">
@@ -27,7 +28,7 @@ export default function DepositAmountCard() {
                     <input
                         type="text"
                         name="balance"
-                        defaultValue="500000"
+                        value={balance}
                         onChange={(e) => {
                             const value = e.target.value.replace(/\D/g, "");
                             setBalance(Number(value));
