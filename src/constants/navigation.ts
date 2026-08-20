@@ -6,7 +6,7 @@ import {
   LayoutDashboard,
   Settings,
   ShieldCheck,
-//   Smartphone,
+  //   Smartphone,
   UserRound,
   UsersRound,
   WalletCards,
@@ -25,7 +25,7 @@ export const menuItems = [
   },
   {
     name: "Chuyển tiền",
-    path: "/transfers",
+    path: "/transfer",
     icon: ArrowLeftRight,
   },
   {

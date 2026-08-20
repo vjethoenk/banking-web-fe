@@ -10,3 +10,9 @@ export interface AccountFormData {
   avatar?: string;
   gender?: Gender;
 }
+
+export interface ReceiverAccountType {
+  accountNumber: string;
+  accountType: string;
+  username: string
+}

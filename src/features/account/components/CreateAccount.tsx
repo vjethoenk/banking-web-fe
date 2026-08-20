@@ -50,7 +50,7 @@ export const CreateAccount: React.FC = () => {
     };
 
     const { mutate: createAccount } = useCreateAccountMutation(accountType)
-    const { mutate: updateUser } = useUpdateUserMutation(useAuthStore.getState().user?.id || "")
+    const { mutate: updateUser } = useUpdateUserMutation()
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();

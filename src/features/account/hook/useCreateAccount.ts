@@ -1,5 +1,5 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { apiCreateAccount, apiUpdateDepositAccount, apiUpdateUser } from "../api/account.api";
+import { apiCreateAccount, apiUpdateDepositAccount, apiUpdateUser, apiVerifyReceiverAccount } from "../api/account.api";
 import type { AccountFormData } from "../types/account.types";
 import { useAuthStore } from "@/features/auth";
 import { toast } from "sonner";
@@ -15,7 +15,7 @@ export const useCreateAccountMutation = (accountType: string) => {
     })
 }
 
-export const useUpdateUserMutation = (id: string) => {
+export const useUpdateUserMutation = () => {
     const queryClient = useQueryClient();
     return useMutation({
         mutationFn: (data: AccountFormData) => apiUpdateUser(data, useAuthStore.getState().user?.id || ""),
@@ -43,6 +43,20 @@ export const useUpdateDepositAccountMutation = () => {
             });
 
             toast.success("Nạp tiền thành công");
+        },
+    });
+};
+
+export const useVerifyReceiverAccountMutation = () => {
+    return useMutation({
+        mutationFn: async (accountNumber: string) => {
+            const res = await apiVerifyReceiverAccount(accountNumber);
+
+            if (res?.data) {
+                return res.data;
+            }
+
+            throw new Error("Không tìm thấy tài khoản");
         },
     });
 };

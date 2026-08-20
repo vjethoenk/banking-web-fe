@@ -3,7 +3,6 @@ import { ROUTES } from '../constants/routes';
 import { AuthLayout } from './layouts/AuthLayout';
 import { DashboardLayout } from './layouts/DashboardLayout';
 import { ProtectedRoute } from '../components/common/ProtectedRoute';
-
 import { LoginForm } from '../features/auth';
 import { RegisterForm } from '../features/auth/components/RegisterForm';
 import MainLayout from '@/features/home/layout';
@@ -14,6 +13,7 @@ import { DashboardPage } from '@/features/dashboard/page';
 import { SettingsPage } from '@/features/home/components/Settings';
 import { CreateAccount } from '@/features/account/components/CreateAccount';
 import DepositPage from '@/features/account/pages/DepositPage';
+import TransferPage from '@/features/transfer/page/TransferPage';
 
 export const router = createBrowserRouter([
   // Root / Home
@@ -45,6 +45,7 @@ export const router = createBrowserRouter([
           { path: ROUTES.DASHBOARD, element: <DashboardPage /> },
           { path: ROUTES.SETTINGS, element: <SettingsPage /> },
           { path: ROUTES.DEPOSIT, element: <DepositPage /> },
+          { path: ROUTES.TRANSFER, element: <TransferPage /> },
         ],
       },
     ],

@@ -1,5 +1,6 @@
 import { apiClient } from "@/services/api/client";
-import type { AccountFormData } from "../types/account.types";
+import type { AccountFormData, ReceiverAccountType } from "../types/account.types";
+import type { ApiResponse } from "@/services/api/api.types";
 
 
 export const apiUpdateUser = (data: AccountFormData, id: string) => {
@@ -16,3 +17,7 @@ export const apiUpdateDepositAccount = (
 ) => {
     return apiClient.put(`/accounts/deposit/${id}`, data);
 };
+
+export const apiVerifyReceiverAccount = (accountNumber: string) => {
+    return apiClient.get<ApiResponse<ReceiverAccountType>>(`/accounts/verify/${accountNumber}`);
+}
