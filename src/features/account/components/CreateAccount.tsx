@@ -24,14 +24,14 @@ export const CreateAccount: React.FC = () => {
     useEffect(() => {
 
         setForm({
-            username: user.username ?? "",
-            email: user.email ?? "",
-            phone: user.phone ?? "",
-            address: user.address ?? "",
-            citizenId: user.citizenId ?? "",
-            dateOfBirth: user.dateOfBirth ?? "",
+            username: user?.username ?? "",
+            email: user?.email ?? "",
+            phone: user?.phone ?? "",
+            address: user?.address ?? "",
+            citizenId: user?.citizenId ?? "",
+            dateOfBirth: user?.dateOfBirth ?? "",
             avatar: "",
-            gender: user.gender as Gender,
+            gender: user?.gender as Gender,
         });
 
     }, [user]);

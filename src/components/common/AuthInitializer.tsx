@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useAuthStore } from '../../features/auth/stores/auth.store';
 import { getMyInfoApi } from '../../features/auth/api/auth.api';
+import type { Gender } from '@/features/account/types/account.types';
 
 interface AuthInitializerProps {
   children: React.ReactNode;
@@ -23,11 +24,11 @@ export const AuthInitializer: React.FC<AuthInitializerProps> = ({ children }) =>
           id: profile.id,
           username: profile.username,
           email: profile.email,
-          phone: profile.phone,
-          citizenId: profile.citizenId,
-          dateOfBirth: profile.dateOfBirth,
-          gender: profile.gender,
-          address: profile.address,
+          phone: profile.phone || undefined,
+          citizenId: profile.citizenId || undefined,
+          dateOfBirth: profile.dateOfBirth || undefined,
+          gender: profile.gender as Gender,
+          address: profile.address || undefined,
           roles: profile.roles.map((r) => r.name),
           permissions: profile.roles.flatMap((r) =>
             r.permissions.map((p) => p.name)

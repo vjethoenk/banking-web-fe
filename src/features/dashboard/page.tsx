@@ -9,13 +9,12 @@ import { SpendingChart } from "./components/SpendingChart";
 export const DashboardPage: React.FC = () => {
   const user = useAuthStore((state) => state.user);
   const [accounts, setAccounts] = useState<Account[]>([]);
-  const [loading, setLoading] = useState(true);
+
 
   useEffect(() => {
     getAccounts()
       .then(setAccounts)
       .catch(console.error)
-      .finally(() => setLoading(false));
   }, []);
   console.log("Account: ", accounts)
 
