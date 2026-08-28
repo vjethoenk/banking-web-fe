@@ -1,30 +1,41 @@
 import type { LucideIcon } from "lucide-react";
-import { Card } from "@/components/ui/card";
 
 interface ServiceCardProps {
     icon: LucideIcon;
     title: string;
     description: string;
+    gradient: string;
+    iconBg: string;
 }
 
 export default function ServiceCard({
     icon: Icon,
     title,
     description,
+    gradient,
+    iconBg,
 }: ServiceCardProps) {
     return (
-        <Card className="group border-0 bg-white p-6 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-lg">
-            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-50 text-[#155eef]">
-                <Icon className="h-5 w-5" />
+        <div className="group relative overflow-hidden rounded-2xl border border-slate-100 bg-white p-7 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:shadow-blue-500/10 hover:border-blue-100">
+            {/* Hover gradient overlay (subtle) */}
+            <div className={`absolute inset-0 opacity-0 group-hover:opacity-5 transition-opacity duration-300 bg-gradient-to-br ${gradient}`} />
+
+            {/* Icon */}
+            <div className={`relative z-10 flex h-14 w-14 items-center justify-center rounded-2xl ${iconBg} shadow-md transition-transform duration-300 group-hover:scale-110`}>
+                <Icon className="h-7 w-7 text-white" />
             </div>
 
-            <h3 className="mt-5 font-semibold text-[#172b4d]">
+            {/* Text */}
+            <h3 className="relative z-10 mt-6 text-base font-bold text-slate-800 group-hover:text-blue-700 transition-colors duration-200">
                 {title}
             </h3>
 
-            <p className="mt-2 text-sm leading-6 text-gray-500">
+            <p className="relative z-10 mt-3 text-sm leading-relaxed text-slate-500">
                 {description}
             </p>
-        </Card>
+
+            {/* Bottom accent line on hover */}
+            <div className={`absolute bottom-0 left-0 h-0.5 w-0 rounded-full bg-gradient-to-r ${gradient} transition-all duration-300 group-hover:w-full`} />
+        </div>
     );
 }
