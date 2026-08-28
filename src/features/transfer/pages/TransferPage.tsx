@@ -9,6 +9,7 @@ import { useTransferStore } from "../stores/transfer.stores";
 import { useTransferInitiate, useVerifyOtpMailMutation } from "../hook/useTransfers";
 import ConfirmTransferModal from "../componets/ConfirmTransferModal";
 import { toast } from "sonner";
+import TransactionSuccessModal from "../componets/TransactionSuccessModal";
 
 
 export default function TransferPage() {
@@ -27,6 +28,7 @@ export default function TransferPage() {
     const setReceiverAccount = useTransferStore((state) => state.setReceiverAccount);
     const setAmount = useTransferStore((state) => state.setAmount);
     const setDescription = useTransferStore((state) => state.setDescription);
+    const [isTransactionSuccessOpen, setIsTransactionSuccessOpen] = useState(false);
 
 
     const handleTransferInitiate = async () => {
@@ -94,6 +96,10 @@ export default function TransferPage() {
                             onOpenChange={setIsConfirmOpen}
                             onBack={() => setIsConfirmOpen(false)}
                             onConfirm={handleConfirmTransfer}
+                        />
+                        <TransactionSuccessModal
+                            open={isTransactionSuccessOpen}
+                            onOpenChange={setIsTransactionSuccessOpen}
                         />
                     </div>
 
