@@ -20,7 +20,7 @@ export const menuItems = [
   },
   {
     name: "Tài khoản",
-    path: "/accounts",
+    path: "/dashboard",
     icon: WalletCards,
   },
   {

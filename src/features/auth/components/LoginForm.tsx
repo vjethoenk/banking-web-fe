@@ -128,7 +128,12 @@ export const LoginForm: React.FC = () => {
         </button>
       </form>
 
-      <div className="mt-8 border-t border-slate-100 dark:border-slate-800 pt-6">
+      <div className="flex justify-center mt-4">
+        <p className="text-slate-500 dark:text-slate-400 mt-2 text-sm">
+          Bạn mới biết đến chúng tôi? <a href="/register" className="text-blue-600 hover:text-blue-500 dark:text-blue-400 transition-colors">Đăng ký tài khoản mới</a>
+        </p>
+      </div>
+      <div className="mt-4 border-t border-slate-100 dark:border-slate-800 pt-6">
         <p className="text-xs font-semibold text-slate-400 dark:text-slate-500 uppercase tracking-widest text-center mb-3">
           Tài khoản Demo nhanh
         </p>

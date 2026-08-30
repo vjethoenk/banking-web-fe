@@ -8,7 +8,7 @@ export interface AccountFormData {
   citizenId?: string;
   dateOfBirth?: string;
   avatar?: string;
-  gender?: Gender;
+  gender?: string | Gender;
 }
 
 export interface ReceiverAccountType {
