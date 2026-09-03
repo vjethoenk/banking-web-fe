@@ -17,6 +17,7 @@ import { useDeleteNews } from '../hook/useDeleteNews';
 import { useNews } from '../hook/useNews';
 import { useUpdateNews } from '../hook/useUpdateNews';
 import { NewsTable } from '../components/NewsTable';
+import type { News } from '../types/news.types';
 
 export const NewsAdminPage = () => {
   const navigate = useNavigate();
@@ -25,7 +26,7 @@ export const NewsAdminPage = () => {
   const { mutate: updateNews, isPending: isUpdating } = useUpdateNews();
   const [deleteId, setDeleteId] = useState<string | null>(null);
 
-  const items = data?.items ?? [];
+  const items = data?.data ?? [];
 
   const handleView = (id: string) => navigate(`/news/${id}`);
   const handleEdit = (id: string) => navigate(`/news/admin/edit/${id}`);
@@ -38,7 +39,7 @@ export const NewsAdminPage = () => {
   };
 
   const handleTogglePublish = (id: string, published: boolean) => {
-    const current = items.find((item) => item.id === id);
+    const current = items.find((item: News) => item.id === id);
     if (!current) return;
 
     const nextPayload = {

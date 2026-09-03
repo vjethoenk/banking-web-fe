@@ -9,16 +9,16 @@ interface NewsDetailProps {
   news: News;
 }
 
-const formatDate = (date: string) => {
-  const value = new Date(date);
-  if (Number.isNaN(value.getTime())) return '—';
+// const formatDate = (date: string) => {
+//   const value = new Date(date);
+//   if (Number.isNaN(value.getTime())) return '—';
 
-  return new Intl.DateTimeFormat('vi-VN', {
-    day: '2-digit',
-    month: '2-digit',
-    year: 'numeric',
-  }).format(value);
-};
+//   return new Intl.DateTimeFormat('vi-VN', {
+//     day: '2-digit',
+//     month: '2-digit',
+//     year: 'numeric',
+//   }).format(value);
+// };
 
 const formatDateFull = (date: string) => {
   const value = new Date(date);
