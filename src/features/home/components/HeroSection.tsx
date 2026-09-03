@@ -189,7 +189,7 @@ export default function HeroSection() {
                     {/* CTA Buttons */}
                     <div className="animate-fade-in-up-delay3 mt-10 flex flex-wrap gap-4">
                         <Link
-                            to={isUser.citizenId ? ROUTES.DASHBOARD : ROUTES.ACCOUNT}
+                            to={isUser?.citizenId ? ROUTES.DASHBOARD : ROUTES.ACCOUNT}
                             className="group inline-flex items-center gap-2 rounded-lg bg-gradient-to-r from-blue-600 to-cyan-500 px-7 py-3 text-base font-semibold text-white shadow-xl shadow-blue-500/30 hover:from-blue-700 hover:to-cyan-600 hover:shadow-blue-500/40 transition-all duration-300"
                         >
                             Mở tài khoản ngay

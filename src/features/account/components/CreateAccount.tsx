@@ -30,7 +30,7 @@ export const CreateAccount: React.FC = () => {
             citizenId: user?.citizenId ?? "",
             dateOfBirth: user?.dateOfBirth ?? "",
             avatar: "",
-            gender: user?.gender === null ? "MALE" : user.gender,
+            gender: user?.gender ?? "",
         });
 
     }, [user]);
